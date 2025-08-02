@@ -1,0 +1,28 @@
+{
+  "name": "vodtv",
+  "version": "2.2.1",
+  "description": "记录 & 分享个人技术知识内容",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview ",
+    "serve": "vitepress serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hefung/bing.git"
+  },
+  "devDependencies": {
+    "canvas-confetti": "^1.9.3",
+    "prettier": "3.5.0",
+    "@mdit-vue/shared": "^0.12.1",
+    "sass-embedded": "^1.89.2",
+    "typescript": "^4.9.5",
+    "vitepress": "^1.6.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
