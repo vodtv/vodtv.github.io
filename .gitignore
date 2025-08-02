@@ -1,5 +1,5 @@
-# vuepress 
-.vuepress/dist
+# vitepress 
+.vitepress/dist
 node_modules/
 .vitepress/cache/
 .viteress/temp/
