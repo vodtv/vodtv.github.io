@@ -42,7 +42,7 @@ jobs:
       - name: Deploy to vodtv.github.io
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PUBLISH_DOCS }}
           external_repository: vodtv/vodtv.github.io 
           publish_dir: .vitepress/dist
           publish_branch: gh-pages
@@ -60,5 +60,5 @@ jobs:
         if: steps.verify_diff.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PUBLISH_DOCS }}
           branch: main 
