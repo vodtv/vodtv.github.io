@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:  
   schedule:
-    - cron: "00 16 * * *"  
+    - cron: "0 */168 * * *" # run every 168 hours
 env:
   TZ: Asia/Shanghai
 jobs:
