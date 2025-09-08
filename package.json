@@ -18,7 +18,7 @@
     "@mdit-vue/shared": "^0.12.1",
     "canvas-confetti": "^1.9.3",
     "prettier": "3.5.0",
-    "sass-embedded": "^1.90.0",
+    "sass-embedded": "^1.92.1",
     "typescript": "^4.9.5",
     "vitepress": "^1.6.4"
   },
