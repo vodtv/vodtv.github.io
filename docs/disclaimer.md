@@ -6,7 +6,7 @@ hero:
   text: 文明观影，遵纪守法  
   actions:
     - text: 智能体验
-      link: https://cdn.vodtv.cn 
+      link: /cdn 
     - theme: alt
       text: 🥇 友情打赏
       link: /donate 
