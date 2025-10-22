@@ -102,4 +102,16 @@ export default defineConfig({
       copyright: 'Copyright © 2019 - Present vodtv.cn'
     }
   }
+  vite: {    
+    resolve: {
+      alias: [
+        {
+          find: /^.*\/VPHero\.vue$/,
+          replacement: fileURLToPath(
+            new URL('./theme/components/VPHero.vue', import.meta.url),
+          ),
+        },
+      ],
+    },
+  },
 })
