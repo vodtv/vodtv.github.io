@@ -5,8 +5,8 @@ hero:
   image: /logo.png
   text: 文明观影，遵纪守法  
   actions:
-    - text: 智能体验
-      link: /cdn 
+    - text: 观影体验
+      openVideoModal: true
     - theme: alt
       text: 🥇 友情打赏
       link: /donate 
@@ -50,3 +50,16 @@ features:
     details: 本项目仅供学习和个人使用，请勿将部署的实例用于商业用途或公开服务。如因公开分享导致的任何法律问题，用户需自行承担责任。   
 ---    
 <confetti />
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  if (urlParams.get('uwu') != null) {
+    const img = document.querySelector('.VPHero .VPImage.image-src')
+    img.src = '/logo.png'
+    img.alt = 'vodtv Logo by @hefung'
+    img.style.maxWidth = '540px'
+  }
+})
+</script>

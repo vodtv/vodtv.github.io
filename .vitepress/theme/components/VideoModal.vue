@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import { onKeyStroke, } from '@vueuse/core';
 
-const VIDEO_ID = 'RRjfm8cMveQ';
+const VIDEO_SOURCE = 'https://player.vimeo.com/video/647441538?autoplay=1'
 
 const emit = defineEmits(['close']);
 
@@ -37,8 +37,8 @@ onKeyStroke('Escape', () => {
 </script>
 
 <template>
-  <button @click="openModal" class="open-modal-button">
-    What is Rolldown?
+  <button @click="openModal" class="open-modal-button">   
+   观影体验 
     <svg class="icon-play" aria-labelledby="simpleicons-play-icon" role="img" viewBox="0 0 100 125" fill="#FFFFFF">
       <title id="simpleicons-play-icon" lang="en" data-v-bf2d099b="">Play icon</title>
       <path
@@ -57,13 +57,13 @@ onKeyStroke('Escape', () => {
           </div>
             <div class="modal-content">
             <iframe class="video-iframe"
-              :src="`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&modestbranding=1&rel=0`"
-              title="YouTube video player" frameborder="0" allow="autoplay; picture-in-picture"
+              :src="VIDEO_SOURCE"
+              title="vodtv.cn" frameborder="0" allow="autoplay; picture-in-picture"
               allowfullscreen></iframe>
             </div>
-            <div class="modal-footer">
-              <a class="vp-external-link-icon" href="https://vite.dev/rolldown" target="_blank" rel="noopener noreferrer">
-                Read the guide and try <code>rolldown-vite</code> now!
+            <div class="modal-footer">           
+              <a class="vp-external-link-icon" href="/cdn" target="_blank" rel="noopener noreferrer">
+                Vodtv <code>cdn</code> 节点!
               </a>
             </div>
         </div>

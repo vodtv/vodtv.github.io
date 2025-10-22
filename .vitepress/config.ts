@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath } from 'node:url';
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -101,7 +102,7 @@ export default defineConfig({
       message: '收录和分享优秀影视网站| MIT Licensed',
       copyright: 'Copyright © 2019 - Present vodtv.cn'
     }
-  }
+  },
   vite: {    
     resolve: {
       alias: [

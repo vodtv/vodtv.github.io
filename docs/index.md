@@ -6,12 +6,12 @@ hero:
   text: 专注 & 洞察 & 分享
   tagline: 让您随时随地享受高质量的观影体验
   image: /logo.png
-  actions:
-    - text: ⚠️ 特别提醒
+  actions:    
+    - text: 观影体验
       openVideoModal: true
-    - theme: alt
-      text: 🥇 友情打赏
-      link: /donate        
+    - theme: brand
+      text: ⚠️ 特别提醒
+      link: /disclaimer        
 features:
   - title: 完全免费
     icon: 🛑
@@ -40,8 +40,8 @@ onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search)
   if (urlParams.get('uwu') != null) {
     const img = document.querySelector('.VPHero .VPImage.image-src')
-    img.src = '/rolldown-uwu.png'
-    img.alt = 'Rolldown Kawaii Logo by @icarusgkx'
+    img.src = '/logo.png'
+    img.alt = 'vodtv Logo by @hefung'
     img.style.maxWidth = '540px'
   }
 })
