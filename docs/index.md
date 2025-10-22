@@ -8,7 +8,7 @@ hero:
   image: /logo.png
   actions:
     - text: ⚠️ 特别提醒
-      link: /disclaimer 
+      openVideoModal: true
     - theme: alt
       text: 🥇 友情打赏
       link: /donate        
@@ -33,4 +33,16 @@ features:
 ---
 
 <confetti />
+<script setup>
+import { onMounted } from 'vue'
 
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  if (urlParams.get('uwu') != null) {
+    const img = document.querySelector('.VPHero .VPImage.image-src')
+    img.src = '/rolldown-uwu.png'
+    img.alt = 'Rolldown Kawaii Logo by @icarusgkx'
+    img.style.maxWidth = '540px'
+  }
+})
+</script>
