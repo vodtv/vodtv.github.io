@@ -33,16 +33,4 @@ features:
 ---
 
 <confetti />
-<script setup>
-import { onMounted } from 'vue'
 
-onMounted(() => {
-  const urlParams = new URLSearchParams(window.location.search)
-  if (urlParams.get('uwu') != null) {
-    const img = document.querySelector('.VPHero .VPImage.image-src')
-    img.src = '/logo.png'
-    img.alt = 'vodtv Logo by @hefung'
-    img.style.maxWidth = '540px'
-  }
-})
-</script>

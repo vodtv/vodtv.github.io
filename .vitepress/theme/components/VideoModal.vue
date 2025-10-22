@@ -1,74 +1,92 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { onKeyStroke, } from '@vueuse/core';
+import { onKeyStroke } from '@vueuse/core'
+import { useData } from 'vitepress'
+import { watch } from 'vue'
+
+defineProps<{
+  text: string
+}>()
+defineOptions({
+  inheritAttrs: false,
+})
+
+const { lang } = useData()
 
 const VIDEO_SOURCE = 'https://player.vimeo.com/video/647441538?autoplay=1'
 
-const emit = defineEmits(['close']);
+// SOURCE: https://github.com/rolldown/rolldown/blob/main/docs/.vitepress/theme/components/RolldownVideoModal.vue
 
-const isModalVisible = ref(false);
+const VIDEO_ID = 'FF1oZqv_UYo' // https://www.youtube.com/watch?v=FF1oZqv_UYo
+
+const isModalVisible = defineModel({ default: false })
 
 // Scroll lock
-watch(isModalVisible, (value) => {
-  if(typeof document === 'undefined') {
-    return
-  }
+watch(
+  isModalVisible,
+  (value) => {
+    if (!globalThis.document) return
 
-  const newOverflowValue = value ? 'hidden' : 'auto';
-  document.documentElement.style.overflow = newOverflowValue;
-},
-  { immediate: true }
-);
+    const newOverflowValue = value ? 'hidden' : 'auto'
+    document.documentElement.style.overflow = newOverflowValue
+  },
+  { immediate: true },
+)
 
 const openModal = () => {
-  isModalVisible.value = true;
-};
+  isModalVisible.value = true
+}
 
 const closeModal = () => {
-  isModalVisible.value = false;
-  emit('close');
-};
+  isModalVisible.value = false
+}
 
 onKeyStroke('Escape', () => {
   if (isModalVisible.value) {
-    closeModal();
+    closeModal()
   }
-});
+})
 </script>
 
 <template>
-  <button @click="openModal" class="open-modal-button">   
-   观影体验 
-    <svg class="icon-play" aria-labelledby="simpleicons-play-icon" role="img" viewBox="0 0 100 125" fill="#FFFFFF">
-      <title id="simpleicons-play-icon" lang="en" data-v-bf2d099b="">Play icon</title>
+  <button class="open-modal-button" @click="openModal">
+    {{ text }}
+    <svg
+      class="icon-play"
+      aria-labelledby="simpleicons-play-icon"
+      role="img"
+      viewBox="0 0 100 125"
+      fill="#FFFFFF"
+    >
+      <title id="simpleicons-play-icon" lang="en">Play icon</title>
       <path
         d="M50,3.8C24.5,3.8,3.8,24.5,3.8,50S24.5,96.2,50,96.2S96.2,75.5,96.2,50S75.5,3.8,50,3.8z M71.2,53.3l-30.8,18  c-0.6,0.4-1.3,0.5-1.9,0.5c-0.6,0-1.3-0.1-1.9-0.5c-1.2-0.6-1.9-1.9-1.9-3.3V32c0-1.4,0.8-2.7,1.9-3.3c1.2-0.6,2.7-0.6,3.8,0  l30.8,18c1.2,0.6,1.9,1.9,1.9,3.3S72.3,52.7,71.2,53.3z"
-        data-v-bf2d099b=""></path>
+      />
     </svg>
   </button>
-  <Teleport to="body" v-if="isModalVisible">
-    <transition name="modal-fade">
-      <dialog class="modal-overlay" @click="closeModal" open aria-modal="true">
-        <div class="modal-container" @click.stop>
-          <div class="modal-header">
-            <button class="close-button" @click="closeModal" aria-label="Close modal">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-            <div class="modal-content">
-            <iframe class="video-iframe"
-              :src="VIDEO_SOURCE"
-              title="vodtv.cn" frameborder="0" allow="autoplay; picture-in-picture"
-              allowfullscreen></iframe>
-            </div>
-            <div class="modal-footer">           
-              <a class="vp-external-link-icon" href="/cdn" target="_blank" rel="noopener noreferrer">
-                Vodtv <code>cdn</code> 节点!
-              </a>
-            </div>
+  <Teleport v-if="isModalVisible" to="body">
+    <dialog class="modal-overlay" open aria-modal="true" @click="closeModal">
+      <div class="modal-container" @click.stop>
+        <div class="modal-header">
+          <button
+            class="close-button"
+            aria-label="Close modal"
+            @click="closeModal"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </dialog>
-    </transition>
+        <div class="modal-content">
+          <iframe
+            class="video-iframe"
+            :src="VIDEO_SOURCE"
+            title="YouTube video player"
+            frameborder="0"
+            allow="autoplay; picture-in-picture"
+            allowfullscreen
+          />
+        </div>
+      </div>
+    </dialog>
   </Teleport>
 </template>
 
@@ -163,9 +181,13 @@ onKeyStroke('Escape', () => {
   text-align: center;
   white-space: nowrap;
   border: 1px solid transparent;
-  background: linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
-    linear-gradient(45deg, #ff5d13, #f0db4f) border-box;
-  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  background:
+    linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
+    linear-gradient(45deg, var(--vp-c-brand-1), #d1a656) border-box;
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    background-color 0.25s;
 
   &:hover {
     border-color: var(--vp-c-brand-3);
@@ -181,3 +203,4 @@ onKeyStroke('Escape', () => {
   }
 }
 </style>
+

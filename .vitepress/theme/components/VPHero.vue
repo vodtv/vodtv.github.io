@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// Based on https://github.com/vuejs/vitepress/blob/1ec84c15040bc3865461c61b651e487f72c3c271/src/client/theme-default/components/VPHero.vue
-import { type Ref, inject } from 'vue'
 import { VPButton, VPImage, type DefaultTheme } from 'vitepress/theme'
 import VideoModal from './VideoModal.vue'
 
@@ -20,27 +18,24 @@ defineProps<{
   image?: DefaultTheme.ThemeableImage
   actions?: HeroAction[]
 }>()
-
-const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 </script>
 
 <template>
-  <div class="VPHero" :class="{ 'has-image': image || heroImageSlotExists }">
+  <div class="VPHero" :class="{ 'has-image': image }">
     <div class="container">
       <div class="main">
         <slot name="home-hero-info-before" />
         <slot name="home-hero-info">
           <h1 class="heading">
-            <span v-if="name" v-html="name" class="name clip"></span>
-            <span v-if="text" v-html="text" class="text"></span>
+            <span v-if="name" class="name clip" v-html="name" />
+            <span v-if="text" class="text" v-html="text" />
           </h1>
-          <p v-if="tagline" v-html="tagline" class="tagline"></p>
+          <p v-if="tagline" class="tagline" v-html="tagline" />
         </slot>
         <slot name="home-hero-info-after" />
 
         <div v-if="actions" class="actions">
           <div v-for="action in actions" :key="action.link" class="action">
-            
             <VPButton
               v-if="!action.openVideoModal"
               tag="a"
@@ -51,13 +46,13 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
               :target="action.target"
               :rel="action.rel"
             />
-            <VideoModal v-else />
+            <VideoModal v-else v-bind="action" />
           </div>
         </div>
         <slot name="home-hero-actions-after" />
       </div>
 
-      <div v-if="image || heroImageSlotExists" class="image">
+      <div v-if="image" class="image">
         <div class="image-container">
           <div class="image-bg" />
           <slot name="home-hero-image">
@@ -71,19 +66,28 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 
 <style scoped>
 .VPHero {
-  margin-top: calc((var(--vp-nav-height) + var(--vp-layout-top-height, 0px)) * -1);
-  padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 48px) 24px 48px;
+  margin-top: calc(
+    (var(--vp-nav-height) + var(--vp-layout-top-height, 0px)) * -1
+  );
+  padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 48px)
+    24px 48px;
 }
 
 @media (min-width: 640px) {
   .VPHero {
-    padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px) 48px 64px;
+    padding: calc(
+        var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px
+      )
+      48px 64px;
   }
 }
 
 @media (min-width: 960px) {
   .VPHero {
-    padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px) 64px 64px;
+    padding: calc(
+        var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px
+      )
+      64px 64px;
   }
 }
 
