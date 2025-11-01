@@ -16,15 +16,15 @@
   },
   "devDependencies": {
     "@mdit-vue/shared": "^0.12.1",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.9.2",
     "@vueuse/core": "^13.9.0",
-    "canvas-confetti": "^1.9.3",
+    "canvas-confetti": "^1.9.4",
     "prettier": "3.5.0",
-    "sass-embedded": "^1.93.2",
+    "sass-embedded": "^1.93.3",
     "typescript": "^5.9.3",
-    "vite": "npm:rolldown-vite@^7.1.19",
+    "vite": "npm:rolldown-vite@^7.1.20",
     "vitepress": "2.0.0-alpha.12",
-    "vitepress-plugin-group-icons": "^1.6.4"
+    "vitepress-plugin-group-icons": "^1.6.5"
   },
   "engines": {
     "node": ">=20"
