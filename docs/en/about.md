@@ -7,7 +7,7 @@ hero:
   text: <small>视频搜索平台</small>
   tagline: "让每个人都能享受自由观影的乐趣"
   actions:
-    - text: 观影体验
+    - text: 电视直播
       openVideoModal: true
     - theme: alt
       text: 🥇 友情打赏

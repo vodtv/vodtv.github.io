@@ -7,7 +7,7 @@ hero:
   text: <small>文明 & 遵纪 & 守法 </small>  
   tagline: ⚠️请在使用前仔细阅读以下重要信息
   actions:
-    - text: 观影体验
+    - text: 电视直播
       openVideoModal: true
     - theme: alt
       text: 🥇 友情打赏
