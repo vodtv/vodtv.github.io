@@ -4,7 +4,7 @@ title: 友情打赏
 hero:
   image: /logo.png
   name: VIP 友情打赏  
-  text: 感谢&打赏&赞助
+  text: <small>感谢&打赏&赞助</small>
   tagline: 祝你们早日升职加薪，登临人生绝颠
   actions:
     - theme: alt

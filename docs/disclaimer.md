@@ -2,9 +2,9 @@
 layout: home
 title: 重要声明    
 hero:
-  image: /logo.png
+  image: /logo.svg
   name: VIP 重要声明
-  text: 文明 & 遵纪 & 守法   
+  text: <small>文明 & 遵纪 & 守法 </small>  
   tagline: ⚠️请在使用前仔细阅读以下重要信息
   actions:
     - text: 观影体验

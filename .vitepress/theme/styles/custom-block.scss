@@ -1,4 +1,7 @@
 /* .vitepress/theme/style/custom-block.css */
+
+
+
 /* 深浅色卡 */
 :root {
     --custom-block-info-left: #cccccc;
@@ -49,7 +52,7 @@
 
 /* 标题字体大小 */
 .custom-block-title {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* info容器:背景色、左侧 */
@@ -74,7 +77,7 @@
 
 /* 提示容器:边框色、背景色、左侧 */
 .custom-block.tip {
-    /* border-color: var(--custom-block-tip); */
+    /* border-color: var(--custom-block-tip); */ 
     border-left: 5px solid var(--custom-block-tip-left);
     background-color: var(--custom-block-tip-bg);
 }

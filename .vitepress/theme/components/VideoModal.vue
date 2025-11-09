@@ -12,11 +12,12 @@ defineOptions({
 
 const { lang } = useData()
 
-const VIDEO_SOURCE = 'https://player.vimeo.com/video/647441538?autoplay=1'
+const VIDEO_SOURCE = 'https://live.64ma.com/tv/live.html'
+
+//https://live.64ma.com/tv/live.html
 
 // SOURCE: https://github.com/rolldown/rolldown/blob/main/docs/.vitepress/theme/components/RolldownVideoModal.vue
 
-const VIDEO_ID = 'FF1oZqv_UYo' // https://www.youtube.com/watch?v=FF1oZqv_UYo
 
 const isModalVisible = defineModel({ default: false })
 
@@ -50,43 +51,24 @@ onKeyStroke('Escape', () => {
 <template>
   <button class="open-modal-button" @click="openModal">
     {{ text }}
-    <svg
-      class="icon-play"
-      aria-labelledby="simpleicons-play-icon"
-      role="img"
-      viewBox="0 0 100 125"
-      fill="#FFFFFF"
-    >
+    <svg class="icon-play" aria-labelledby="simpleicons-play-icon" role="img" viewBox="0 0 100 125" fill="#FFFFFF">
       <title id="simpleicons-play-icon" lang="en">Play icon</title>
       <path
-        d="M50,3.8C24.5,3.8,3.8,24.5,3.8,50S24.5,96.2,50,96.2S96.2,75.5,96.2,50S75.5,3.8,50,3.8z M71.2,53.3l-30.8,18  c-0.6,0.4-1.3,0.5-1.9,0.5c-0.6,0-1.3-0.1-1.9-0.5c-1.2-0.6-1.9-1.9-1.9-3.3V32c0-1.4,0.8-2.7,1.9-3.3c1.2-0.6,2.7-0.6,3.8,0  l30.8,18c1.2,0.6,1.9,1.9,1.9,3.3S72.3,52.7,71.2,53.3z"
-      />
+        d="M50,3.8C24.5,3.8,3.8,24.5,3.8,50S24.5,96.2,50,96.2S96.2,75.5,96.2,50S75.5,3.8,50,3.8z M71.2,53.3l-30.8,18  c-0.6,0.4-1.3,0.5-1.9,0.5c-0.6,0-1.3-0.1-1.9-0.5c-1.2-0.6-1.9-1.9-1.9-3.3V32c0-1.4,0.8-2.7,1.9-3.3c1.2-0.6,2.7-0.6,3.8,0  l30.8,18c1.2,0.6,1.9,1.9,1.9,3.3S72.3,52.7,71.2,53.3z" />
     </svg>
   </button>
   <Teleport v-if="isModalVisible" to="body">
-    <dialog class="modal-overlay" open aria-modal="true" @click="closeModal">
-      <div class="modal-container" @click.stop>
-        <div class="modal-header">
-          <button
-            class="close-button"
-            aria-label="Close modal"
-            @click="closeModal"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <transition name="modal-fade">
+      <dialog class="modal-overlay" open aria-modal="true" @click="closeModal">
+        <div class="modal-container" @click.stop>
+          <div class="modal-content">
+            <iframe class="video-iframe" :src="VIDEO_SOURCE" title="YouTube video player" frameborder="0"
+              allow="autoplay; picture-in-picture" allowfullscreen webkitallowfullscreen mozallowfullscreen />
+          </div>
+          
         </div>
-        <div class="modal-content">
-          <iframe
-            class="video-iframe"
-            :src="VIDEO_SOURCE"
-            title="YouTube video player"
-            frameborder="0"
-            allow="autoplay; picture-in-picture"
-            allowfullscreen
-          />
-        </div>
-      </div>
-    </dialog>
+      </dialog>
+    </transition>
   </Teleport>
 </template>
 
@@ -106,11 +88,19 @@ onKeyStroke('Escape', () => {
 }
 
 .modal-container {
-  position: relative;
-  max-width: 850px;
-  width: 90%;
-  border-radius: 4px;
-  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 8px;
+  position: fixed;
+  width: 85%;
+  height: auto;
+  padding: 0.5em;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
 }
 
 .modal-header {
@@ -127,6 +117,7 @@ onKeyStroke('Escape', () => {
     }
   }
 }
+
 .modal-content {
   aspect-ratio: 16 / 9;
   width: 100%;
@@ -149,9 +140,11 @@ onKeyStroke('Escape', () => {
   background-color: var(--vp-c-bg-soft);
   font-weight: bold;
   color: var(--vp-c-text-1);
+
   & a {
     transition: color 0.25s;
     display: inline;
+
     &:hover {
       color: var(--vp-c-brand-3);
     }
@@ -181,13 +174,9 @@ onKeyStroke('Escape', () => {
   text-align: center;
   white-space: nowrap;
   border: 1px solid transparent;
-  background:
-    linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
-    linear-gradient(45deg, var(--vp-c-brand-1), #d1a656) border-box;
-  transition:
-    color 0.25s,
-    border-color 0.25s,
-    background-color 0.25s;
+  background: linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
+    linear-gradient(45deg, #ff5d13, #f0db4f) border-box;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
 
   &:hover {
     border-color: var(--vp-c-brand-3);
@@ -203,4 +192,3 @@ onKeyStroke('Escape', () => {
   }
 }
 </style>
-

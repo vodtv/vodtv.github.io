@@ -3,6 +3,7 @@ import { h, watch } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { type Theme } from 'vitepress'
 
+import AsideSponsors from './components/AsideSponsors.vue'
 import ShareButton from './components/ShareButton.vue'
 import notice from './components/notice.vue'
 import confetti from './components/confetti.vue' //五彩纸屑
@@ -33,6 +34,7 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'aside-outline-before': () => h(ShareButton),
+      'aside-bottom': () => h(AsideSponsors),
       'layout-top': () => h(notice),
     })
   },

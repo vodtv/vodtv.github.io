@@ -4,7 +4,7 @@ title: 关于我们
 hero:
   image: /logo.png
   name: 我们将打造
-  text: 视频搜索平台
+  text: <small>视频搜索平台</small>
   tagline: "让每个人都能享受自由观影的乐趣"
   actions:
     - text: 观影体验

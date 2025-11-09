@@ -3,8 +3,8 @@ layout: home
 title: 节点介绍    
 hero:
   name: 🚀节点介绍
-  image: /logo.png
-  text: 自由观影，畅享精彩
+  image: /logo.svg
+  text: <small>自由观影，畅享精彩</small>
   tagline: 免费、开源的在线视频搜索平台，智能广告过滤。
   actions:
     - text: ⚠️ 特别提醒
