@@ -47,19 +47,7 @@ jobs:
           publish_dir: .vitepress/dist
           publish_branch: gh-pages
           cname: vodtv.github.io
-
-      - name: Sync to CNB Repository
-        run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:${{ github.workspace }} \
-            -w ${{ github.workspace }} \
-            -e PLUGIN_TARGET_URL="https://cnb.cool/vodtv-cn/docs.git" \
-            -e PLUGIN_AUTH_TYPE="https" \
-            -e PLUGIN_USERNAME="cnb" \
-            -e PLUGIN_PASSWORD=${{ secrets.GIT_PASSWORD }} \
-            -e PLUGIN_SYNC_MODE="rebase" \
-            tencentcom/git-sync    
-      
+    
       - name: Commit project 🐱‍🏍
         if: steps.verify_diff.outputs.changed == 'true'
         run: | 
