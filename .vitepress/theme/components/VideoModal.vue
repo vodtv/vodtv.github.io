@@ -12,7 +12,7 @@ defineOptions({
 
 const { lang } = useData()
 
-const VIDEO_SOURCE = 'https://live.64ma.com/tv/live.html'
+const VIDEO_SOURCE = 'https://m.345iptv.com/?act=home'
 
 //https://live.64ma.com/tv/live.html
 
