@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: alt
       text: 🥇 国际平台
-      link: https://paypal.me/hefun 
+      link: https://wise.com/pay/me/changfengh
     - theme: alt
       text: 🥇 国内平台
       link: https://afdian.com/a/viptv  
