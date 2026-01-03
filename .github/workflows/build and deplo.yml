@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:  
   schedule:
-    - cron: "0 */168 * * *" # run every 168 hours
+    - cron: "0 10 */10 * *" # 每10天更新一次
 env:
   TZ: Asia/Shanghai
 jobs:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v6 
 
       - name: Set pnpm
         uses: pnpm/action-setup@v4
@@ -22,13 +22,15 @@ jobs:
           run_install: false
 
       - name: Set Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: pnpm
 
       - name: Install dependencies
-        run:  pnpm install
+        run: |
+          pnpm up
+          pnpm install
 
       - name: Build project
         env:
@@ -47,18 +49,6 @@ jobs:
           publish_dir: .vitepress/dist
           publish_branch: gh-pages
           cname: vodtv.github.io
-
-      - name: Sync to CNB Repository
-        run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:${{ github.workspace }} \
-            -w ${{ github.workspace }} \
-            -e PLUGIN_TARGET_URL="https://cnb.cool/vodtv-cn/docs.git" \
-            -e PLUGIN_AUTH_TYPE="https" \
-            -e PLUGIN_USERNAME="cnb" \
-            -e PLUGIN_PASSWORD=${{ secrets.GIT_PASSWORD }} \
-            -e PLUGIN_SYNC_MODE="rebase" \
-            tencentcom/git-sync    
       
       - name: Commit project 🐱‍🏍
         if: steps.verify_diff.outputs.changed == 'true'
@@ -66,7 +56,7 @@ jobs:
           git config --local user.email "28900094+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "HeFung"
           git add .
-          git commit -m "bing wallpaper project Update: `TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'`"
+          git commit -m "project Update: `TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'`"
 
       - name: Push project 🚀
         if: steps.verify_diff.outputs.changed == 'true'

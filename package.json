@@ -16,13 +16,13 @@
   },
   "devDependencies": {
     "@mdit-vue/shared": "^0.12.1",
-    "@types/node": "^24.9.2",
+    "@types/node": "^24.10.4",
     "@vueuse/core": "^13.9.0",
     "canvas-confetti": "^1.9.4",
     "prettier": "3.5.0",
-    "sass-embedded": "^1.93.3",
+    "sass-embedded": "^1.97.1",
     "typescript": "^5.9.3",
-    "vite": "npm:rolldown-vite@^7.1.20",
+    "vite": "npm:rolldown-vite@^7.3.0",
     "vitepress": "2.0.0-alpha.12",
     "vitepress-plugin-group-icons": "^1.6.5"
   },
