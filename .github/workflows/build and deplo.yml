@@ -28,9 +28,15 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
+<<<<<<< HEAD
         run: |
           pnpm up
           pnpm install
+=======
+        run:  |
+           pnpm up
+           pnpm install
+>>>>>>> 5b2a0edd2ecbcb9d341e25c68a5a9eef90d9db46
 
       - name: Build project
         env:
@@ -49,7 +55,11 @@ jobs:
           publish_dir: .vitepress/dist
           publish_branch: gh-pages
           cname: vodtv.github.io
+<<<<<<< HEAD
       
+=======
+    
+>>>>>>> 5b2a0edd2ecbcb9d341e25c68a5a9eef90d9db46
       - name: Commit project 🐱‍🏍
         if: steps.verify_diff.outputs.changed == 'true'
         run: | 
@@ -59,8 +69,6 @@ jobs:
           git commit -m "project Update: `TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'`"
 
       - name: Push project 🚀
-        if: steps.verify_diff.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main 
