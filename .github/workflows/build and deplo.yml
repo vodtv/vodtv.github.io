@@ -57,9 +57,4 @@ jobs:
           git config --local user.name "HeFung"
           git add .
           git commit -m "project Update: `TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'`"
-
-      - name: Push project 🚀
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          git push
