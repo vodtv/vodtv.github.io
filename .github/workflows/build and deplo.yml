@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6 
+        uses: actions/checkout@v5 
 
       - name: Set pnpm
         uses: pnpm/action-setup@v4
@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: pnpm
+          check-latest: true
 
       - name: Install dependencies
         run:  |
