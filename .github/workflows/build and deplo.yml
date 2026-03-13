@@ -5,6 +5,8 @@ on:
   workflow_dispatch:  
   schedule:
     - cron: "0 10 */10 * *" # 每10天更新一次
+permissions:
+  contents: write        
 env:
   TZ: Asia/Shanghai
 jobs:
