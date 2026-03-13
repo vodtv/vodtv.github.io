@@ -31,7 +31,6 @@ jobs:
         run: |
           pnpm up
           pnpm install
-
       - name: Build project
         env:
           NODE_OPTIONS: --max_old_space_size=8192
@@ -56,7 +55,5 @@ jobs:
           git config --local user.email "28900094+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "HeFung"
           git add .
-          if ! git diff --staged --quiet; then
-            git commit -m "Github Action Auto Updated"
-            git push
-          fi
+          git commit -m "project Update: `TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'`"
+          git push
