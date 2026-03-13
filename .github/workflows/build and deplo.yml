@@ -25,9 +25,9 @@ jobs:
           cache: pnpm
 
       - name: Install deps
-       run: |
-         pnpm up
-         pnpm install --frozen-lockfile
+        run: |
+          pnpm up
+          pnpm install --frozen-lockfile
 
       - name: Build project
         run: pnpm run build 
