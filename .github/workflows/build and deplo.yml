@@ -35,11 +35,7 @@ jobs:
       - name: Build project
         env:
           NODE_OPTIONS: --max_old_space_size=8192
-        run: pnpm run build 
-          
-      - name: Check if there are any changes
-        id: verify_diff
-        run: git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT           
+        run: pnpm run build              
   
       - name: Deploy to vodtv.github.io
         uses: peaceiris/actions-gh-pages@v4
@@ -51,12 +47,10 @@ jobs:
           cname: vodtv.github.io
       
       - name: Commit project 🐱‍🏍
-        if: steps.verify_diff.outputs.changed == 'true'
         run: | 
           git config --local user.email "28900094+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "HeFung"
           git add .
-          if ! git diff --staged --quiet; then
-            git commit -m "Github Action Auto Updated"
-            git push
-          fi
+          git commit -m "Github Action Auto Updated"
+          git push
+      
