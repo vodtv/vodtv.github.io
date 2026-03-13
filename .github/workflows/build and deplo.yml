@@ -27,7 +27,7 @@ jobs:
       - name: Install deps
         run: |
           pnpm up
-          pnpm install --frozen-lockfile
+          pnpm install
 
       - name: Build project
         run: pnpm run build 
