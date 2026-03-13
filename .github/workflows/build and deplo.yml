@@ -20,14 +20,12 @@ jobs:
 
       - name: Set Node.js
         uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-
+        
       - name: Install dependencies
         run: |
           pnpm up
           pnpm install
+          
       - name: Build project
         env:
           NODE_OPTIONS: --max_old_space_size=8192
@@ -53,4 +51,4 @@ jobs:
           git config --local user.name "HeFung"
           git add .
           git commit -m "project Update: `TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S'`"
-          git push
+          git push -f
