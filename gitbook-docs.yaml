@@ -9,3 +9,10 @@ site:
       default: true
       content:
         directory: ./untitled
+    - type: space
+      key: space-2
+      title: Landing Page
+      path: landing-page
+      draft: true
+      content:
+        directory: ./landing-page
