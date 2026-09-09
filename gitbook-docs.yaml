@@ -11,8 +11,9 @@ site:
         directory: ./untitled
     - type: space
       key: space-2
-      title: Landing Page
+      title: vodtv
       path: landing-page
       draft: true
       content:
         directory: ./landing-page
+        language: zh
