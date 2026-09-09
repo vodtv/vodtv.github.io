@@ -1,6 +1,6 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
-  title: vodtv-docs
+  title: vodtv.gitbook.io
   structure:
     - type: space
       key: space-1
